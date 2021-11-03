@@ -1,25 +1,50 @@
-pragma solidity 0.8.9;
+// SPDX-License-Identifier: GPL-3.0
+
+// pragma experimental ABIEncoderV2;
+pragma solidity ^0.8.9;
 
 contract Election{
+
+
     
-    //false: not voted 
-    //true: voted
-    //model a Candidate
-    //struct for Candidates
+    address public owner;
+    uint candidateCount;
+
+    uint voterCount;
+
+    bool start;
+    bool end;
+    Lead public the_one;
+
     
 
-    //events
-    event Regestering_candidate(uint256 candidate_id,  string name, uint256 total_vote);
-    event Voted(uint256 id);
+    // Constructor
+    constructor () public {
+        owner = msg.sender;
+        candidateCount = 0;
+        voterCount = 0;
+        start = false;
+        end = false;
+    }
     event Leader(uint256 highest_votes, string name);
-    
 
-    //Entities
+    function getOwner() public view returns(address) {
+        return owner;
+    }
+
+    // Only Admin can access
+    modifier onlyAdmin() {
+        require(msg.sender == owner);
+        _;
+    }
 
     struct Candidate{
         string name;
-        uint256 vote_count;
-        uint256 id;
+        string party;
+        string manifesto;
+        uint voteCount;
+        uint schoolId;
+        uint candidateId;
     }
     
     struct Lead{
@@ -27,68 +52,105 @@ contract Election{
         uint256 votes;
     }
 
-    
-    //declarations
-    Lead public the_one;
-    
-    uint256 public candidates_count;
-    
-    address public contractOwner;
-    
-    constructor(){
-        contractOwner = msg.sender;
+    mapping(uint => Candidate) public candidateDetails;
+
+    // Only admin can add candidate
+    function addCandidate(string memory _name, string memory _party, string memory _manifesto, uint _schoolId) public onlyAdmin {
+        Candidate memory newCandidate = Candidate({
+           name : _name,
+           party : _party,
+           manifesto : _manifesto,
+           voteCount : 0,
+           schoolId : _schoolId,
+           candidateId : candidateCount
+        });
+
+        candidateDetails[candidateCount] = newCandidate;
+        candidateCount += 1;
     }
-    
-    
-    //mapping declarations to corresponding values
-    mapping(uint256 => Candidate)public Candidates;
-    mapping(address => bool) public voters;
-    mapping(address => bool) public candidate_exist;
+
+    // get total number of candidates
+    function getCandidateNumber() public view returns (uint) {
+        return candidateCount;
+    }
+
+    struct Voter{
+        address voterAddress;
+        string name;
+        string voterId;
+        uint schoolId;
+        bool hasVoted;
+        bool isVerified;
+    }
+
+    address[] public voters;
+    mapping(address => Voter) public voterDetails;
+
+    // request to be added as voter
+    function requestVoter(string memory _name, string memory _voterId, uint _schoolId) public {
+        Voter memory newVoter = Voter({ 
+           voterAddress : msg.sender,
+           name : _name,
+           voterId : _voterId,
+           schoolId : _schoolId,
+           hasVoted : false,
+           isVerified : false
+        });
+
+        voterDetails[msg.sender] = newVoter;
+        voters.push(msg.sender);
+        voterCount += 1;
+    }
+
+    // get total number of voters
+    function getVoterCount() public view returns (uint) {
+        return voterCount;
+    }
+
+    function verifyVoter(address _address) public onlyAdmin {
+        voterDetails[_address].isVerified = true;
+    }
+
+    function vote(uint candidateId) public{
+        require(voterDetails[msg.sender].hasVoted == false);
+        require(voterDetails[msg.sender].isVerified == true);
+        require(start == true);
+        require(end == false);
+
+        candidateDetails[candidateId].voteCount += 1;
+        voterDetails[msg.sender].hasVoted = true;
+    }
+
+    function startElection() public onlyAdmin {
+        start = true;
+        end = false;
+    }
+
+    function endElection() public onlyAdmin {
+        end = true;
+        start = false;
+    }
+
+    function getStart() public view returns (bool) {
+        return start;
+    }
+
+    function getEnd() public view returns (bool) {
+        return end;
+    }
 
     
-    modifier onlyOwner(){
-        require(contractOwner == msg.sender, "You are not authorised to proceed");
-        _;
-        
-    }
-    
-    modifier already_voted(){
-        require(voters[msg.sender] ==  false, 'The vote has already been casted');
-        _;
-    }
-    
-    modifier candidate_registered(address _add){
-        require(candidate_exist[_add] == false, "The candidate is already Registered");
-        _;
-    }
-    
-    //store Candidate    
-    //fetch Candidate
-    //store candidate count
-    function add_candidate(address _add, string memory _name) public onlyOwner candidate_registered(_add) {
-        Candidates[candidates_count] = Candidate(_name, 0, candidates_count);
-        candidates_count++;
-        candidate_exist[_add] = true;
-        emit Regestering_candidate(candidates_count, _name, Candidates[candidates_count - 1].vote_count );
-    }
-    
-    // FUNCTION TO vote
-    function add_vote(uint256 _id) public already_voted(){
-        require(_id >= 0 && _id < candidates_count, "Invalid option");
-        voters[msg.sender] = true;
-        Candidates[_id].vote_count++;
-        emit Voted(_id);
-        // ,Candidates[_id].vote_count
-    }
+    //declarations
     
     // FUNCTION TO FIND THE lead
     function leader() public{
+        require(end==true);
         uint256 max_votes = 0;
         string memory name = "";
-        for(uint256 i=0; i< candidates_count; i++){
-            if(max_votes < Candidates[i].vote_count){
-                max_votes = Candidates[i].vote_count;
-                name = Candidates[i].name;
+        for(uint256 i=0; i< candidateCount; i++){
+            if(max_votes < candidateDetails[i].voteCount){
+                max_votes = candidateDetails[i].voteCount;
+                name = candidateDetails[i].name;
             }
         }
         the_one = Lead(name, max_votes);
