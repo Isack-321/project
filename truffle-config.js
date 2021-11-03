@@ -1,36 +1,36 @@
 const path = require("path");
-const fs = require("fs");
-const secrets = JSON.parse(fs.readFileSync(".secrets.json").toString().trim());
-const PRIVATE_KEY = "";
-const INFURA_KEY = "";
-const ROPSTEN_KEY = "";
-
-
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
   networks: {
-    develop: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 7545,            // Standard Ethereum port (default: none)
+    rinkeyby: {
+      provider: function() {
+        return new HDWalletProvider("device rent title pony champion stay control infant dilemma amused region tip", "https://rinkeby.infura.io/v3/f42584fe549f4b6a8862329724810f33")
+      },
+      network_id: 4
+    },
+    development: { 
       network_id: "5777", 
-      
+      host: 'localhost', 
+      port: 7545,
+      gas: 6721975,
+      gasPrice: 20000000000
     }
   },
   compilers: {
     solc: {
-    version: "0.8.9",    // Fetch exact version from solc-bin (default: truffle's version)
-      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
+      version: "0.4.17",
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
     }
-  },
-
+ },
+//  rinkeyby: {
+//    provider: new HDWalletProvider(secrets.mnemonic, secrets.infuraApiKey),
+//    network_id: '4'
+//  }
 };
