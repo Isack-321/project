@@ -61,6 +61,40 @@ componentDidMount = async () => {
 };
 
 
+render() {
+  if (!this.state.web3) {
+    return (
+      <div className="CandidateDetails">
+        <div className="CandidateDetails-title">
+          <h1>
+          Loading Web3, accounts, and contract..
+          </h1>
+        </div>
+      {this.state.isOwner ? <NavigationAdmin /> : <Navigation />}
+      </div>
+    );
+  }
+
+  return (
+    <div className="App">
+      {/* <div>{this.state.owner}</div> */}
+      {/* <p>Account address - {this.state.account}</p> */}
+      <div className="CandidateDetails">
+        <div className="CandidateDetails-title">
+          <h1>
+            ADMIN PORTAL
+          </h1>
+        </div>
+      </div>
+      {this.state.isOwner ? <NavigationAdmin /> : <Navigation />}
+
+      <div className="home">
+          STUDENTS VOTING SYSTEM
+                 </div>
+
+    </div>
+  );
+}
 }
 
 export default Home;
