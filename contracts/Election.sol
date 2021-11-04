@@ -9,9 +9,7 @@ contract Election{
     
     address public owner;
     uint candidateCount;
-
     uint voterCount;
-
     bool start;
     bool end;
     Lead public the_one;
@@ -19,7 +17,7 @@ contract Election{
     
 
     // Constructor
-    constructor () public {
+    constructor(){
         owner = msg.sender;
         candidateCount = 0;
         voterCount = 0;
