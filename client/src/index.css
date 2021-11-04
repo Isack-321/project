@@ -1,13 +1,301 @@
 body {
+  background-color: #fbfbfb;
+  text-align: center;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #395793;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.candidate{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin: 50px;
+}
+
+.candidate:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+}
+
+.candidateName {
+  font-size: 20px;
+  font-family: monospace;
+  padding-left: 60px;
+  text-align: left;
+  background-color: #bec8ed;
+}
+
+.candidateDetails {
+  background-color: #172a5b;
+  color: #eeeeee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-family: initial;
+}
+
+.CandidateDetails{
+  text-align: center;
+}
+
+.CandidateDetails-title{
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #eeeeee;
+}
+
+.CandidateDetails-sub-title{
+  background-color: #283755;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #eeeeee;
+}
+
+.form{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60%;
+  margin: 50px;
+  background-color: #074f9b;
+}
+
+.form-label{
+  background-color: #392f48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #eeeeee;
+}
+
+.form-input{
+  color: #eeeeee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-family: initial;
+}
+
+.button-vote{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button-vote:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(134, 175, 76);
+}
+
+.CandidateDetails-mid-sub-title{
+  background-color: #283755;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #eeeeee;
+  width: 90%;
+  margin: 50px;
+}
+
+.button-verified{
+  background-color: rgb(1, 123, 11);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button-verify{
+  background-color: rgb(126, 13, 1);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.button-verify:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(175, 76, 114);
+}
+
+.admin-buttons{
+  margin: 20px;
+}
+
+.admin-buttons-start-s{
+  background-color: rgb(3, 135, 18);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.admin-buttons-start-s:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(138, 16, 7);
+}
+
+.admin-buttons-start-e{
+  background-color: rgb(138, 16, 7);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.admin-buttons-start-e:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(3, 135, 18);
+}
+
+.admin-buttons-end-s{
+  background-color: rgb(3, 135, 18);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.admin-buttons-end-s:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(138, 16, 7);
+}
+
+.admin-buttons-end-e{
+  background-color: rgb(138, 16, 7);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.admin-buttons-end-e:hover{
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.6);
+  background-color:rgb(3, 135, 18);
+}
+
+.navbar {
+  width: 100%;
+  background-color: #45a29e;
+  overflow: auto;
+  /* margin-left: 12px; */
+}
+
+.navbar a {
+  float: left;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 19px;
+}
+
+.navbar a:hover {
+  background-color: #1a1a1d;
+}
+
+.navbar a.active {
+  background-color: #4CAF50;
+}
+
+.heading { 
+  background-color: #1f2833;
+}
+
+.Admin{
+  background-color: #bd2409;
+  height: 25px;
+}
+
+.home {
+  margin: 50px;
+  font-size: 24px;
+  color: #0d0d0d;
+  background-color: rgb(94, 145, 208);
+  padding: 20px;
 }

@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM,{Route,Router,Switch} from 'react-dom';
 import './index.css';
-import App from './App';
+import Home from './components/Home';
 import * as serviceWorker from './serviceWorker';
+import History from './History';
 
-ReactDOM.render(<Router history={history}>
+ReactDOM.render(
+<Router history={History}>
     <Switch>
         <Route exact path='/' component={Home}/>
     </Switch>

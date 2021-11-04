@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Web3 from "web3";
-import "./App.css";
+import React, { useEffect, useState} from "react";
 import Election from "../contracts/Election.json";
+import getWeb3 from "../getWeb3";
+
+import NavigationAdmin from './NavigationAdmin';
+import Navigation from './Navigation';
 class Home extends React.Component {
 
 constructor(props) {
