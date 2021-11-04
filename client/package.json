@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap":"3.4.1",
-    "history":"4.10.1",
-    "next":"12.0.2",
+    "bootstrap": "3.4.1",
+    "browser-history": "^1.0.1",
+    "history": "^4.10.1",
+    "next": "12.0.2",
     "react": "16.11.0",
     "react-bootstrap-table": "4.3.1",
     "react-dom": "16.11.0",
-    "react-router-dom":"5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
     "web3": "1.2.2"
   },
