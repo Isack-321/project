@@ -1,10 +1,10 @@
-import React, { useEffect, useState} from "react";
+import React, { Component} from "react";
 import Election from "../contracts/Election.json";
 import getWeb3 from "../getWeb3";
 
 import NavigationAdmin from './NavigationAdmin';
 import Navigation from './Navigation';
-class Home extends React.Component {
+class Home extends Component {
 
 constructor(props) {
   super(props);
@@ -41,15 +41,15 @@ componentDidMount = async () => {
     // Set web3, accounts, and contract to the state, and then proceed with an
     // example of interacting with the contract's methods.
 
-    this.setState({ ElectionInstance: instance, web3: web3, account: accounts[0] });
+    this.setState({ Election: instance, web3: web3, account: accounts[0] });
 
-    const owner = await this.state.ElectionInstance.methods.getOwner().call();
+    const owner = await this.state.Election.methods.getOwner().call();
     if(this.state.account === owner){
       this.setState({isOwner : true});
     }
 
-    let start = await this.state.ElectionInstance.methods.getStart().call();
-    let end = await this.state.ElectionInstance.methods.getEnd().call();
+    let start = await this.state.Election.methods.getStart().call();
+    let end = await this.state.Election.methods.getEnd().call();
 
     this.setState({start : start, end : end });
     
@@ -91,7 +91,7 @@ render() {
       {this.state.isOwner ? <NavigationAdmin /> : <Navigation />}
 
       <div className="home">
-          STUDENTS VOTING SYSTEM
+          STUDENT'S VOTING SYSTEM
                  </div>
 
     </div>
