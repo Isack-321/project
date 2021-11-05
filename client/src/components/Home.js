@@ -84,7 +84,7 @@ render() {
       <div className="CandidateDetails">
         <div className="CandidateDetails-title">
           <h1>
-            ADMIN PORTAL
+            User
           </h1>
         </div>
       </div>
