@@ -113,7 +113,7 @@ class RequestVoter extends Component {
         <div className="CandidateDetails">
         <div className="CandidateDetails-title">
           <h1>
-          ALREADY REQUESTED TO REGISTER
+          ALREADY REGISTERED...WAIT FOR VERIFICATION 
           </h1>
         </div>
         {this.state.isOwner ? <NavigationAdmin /> : <Navigation />}
@@ -156,7 +156,7 @@ class RequestVoter extends Component {
         </FormGroup>
 
         <FormGroup>
-            <div className="form-label">Enter SchoolId  </div>
+            <div className="form-label">Enter SchoolCode  </div>
             <div className="form-input">
               <FormControl
                   input = 'text'
@@ -166,7 +166,7 @@ class RequestVoter extends Component {
             </div>
         </FormGroup>
         <Button onClick={this.addVoter}  className="button-vote">
-          Request to Add Voter
+          Register
         </Button>
         </div>
 

@@ -159,7 +159,7 @@ class AddCandidate extends Component {
           </FormGroup>
 
           <FormGroup>
-              <div className="form-label">Enter SchoolId - </div>
+              <div className="form-label">Enter SchoolCode - </div>
               <div className="form-input">
                 <FormControl
                     input = 'text'

@@ -84,7 +84,7 @@ render() {
       <div className="CandidateDetails">
         <div className="CandidateDetails-title">
           <h1>
-            User
+            Welcome...
           </h1>
         </div>
       </div>

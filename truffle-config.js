@@ -8,7 +8,7 @@ module.exports = {
   networks: {
     rinkeyby: {
       provider: function() {
-        return new HDWalletProvider("bitter exotic holiday funny brother glare resource layer fruit edit buddy world", "https://rinkeby.infura.io/v3/f42584fe549f4b6a8862329724810f33")
+        return new HDWalletProvider("focus awake trophy segment drift corn danger drastic hope metal verify suggest", "https://rinkeby.infura.io/v3/f42584fe549f4b6a8862329724810f33")
       },
       network_id: 4
     },

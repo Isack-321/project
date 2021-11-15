@@ -8,7 +8,7 @@ class NavigationAdmin extends Component {
                     <div className="Admin">ADMIN</div>
                     <Link to ='/' className ="heading">HOME</Link>
                     <Link to='/CandidateDetails'>CANDIDATES</Link>
-                    <Link to='/RequestVoter'>APPLY FOR VOTER</Link>
+                    <Link to='/RequestVoter'>REGISTER AS A VOTER</Link>
                     <Link to='/Vote'>VOTE</Link>
                     <Link to='/VerifyVoter'>VERIFY VOTER</Link>
                     <Link to='/AddCandidate'>ADD CANDIDATE</Link>
