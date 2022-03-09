@@ -145,7 +145,7 @@ class RequestVoter extends Component {
         </FormGroup>
 
         <FormGroup>
-            <div className="form-label">Enter VoterId - </div>
+            <div className="form-label">Enter Reg No - </div>
             <div className="form-input">
               <FormControl
                   input = 'textArea'

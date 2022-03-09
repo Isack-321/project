@@ -4,6 +4,7 @@ import getWeb3 from "../getWeb3";
 
 import NavigationAdmin from './NavigationAdmin';
 import Navigation from './Navigation';
+import Timer from './Timer';
 class Home extends Component {
 
 constructor(props) {
@@ -91,7 +92,8 @@ render() {
       {this.state.isOwner ? <NavigationAdmin /> : <Navigation />}
 
       <div className="home">
-          STUDENT'S VOTING SYSTEM
+          STUDENT'S VOTING SYSTEM <br/>
+          {this.state.start ? <Timer/> : <span>election will start soon</span>}
                  </div>
 
     </div>

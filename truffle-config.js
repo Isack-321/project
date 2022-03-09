@@ -8,7 +8,7 @@ module.exports = {
   networks: {
     rinkeyby: {
       provider: function() {
-        return new HDWalletProvider("winter any animal main deputy chest merit interest canoe effort immense cruel", "https://rinkeby.infura.io/v3/f42584fe549f4b6a8862329724810f33")
+        return new HDWalletProvider("guide domain miracle now spread brown rice artist mix yard issue carbon", "https://rinkeby.infura.io/v3/f42584fe549f4b6a8862329724810f33")
       },
       network_id: 4
     },
